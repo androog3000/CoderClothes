@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">CoderClothes</string>
+    <string name="coderClothesMainLogo">CoderClothes</string>
+    <string name="classy">Keep it classy, keep it functional</string>
+    <string name="mainLogin">Login</string>
+    <string name="mainCreateAccount">Create Account</string>
+    <string name="LoginPageHeader">Login</string>
+    <string name="LoginPageEnterButton">Enter</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="usernameHint">Enter username</string>
+    <string name="passwordHint">Enter Password</string>
+    <string name="no">No</string>
+    <string name="user">USER</string>
+    <string name="userMenuLogout">Logout</string>
+    <string name="landingUsername">Username</string>
+    <string name="landingWelcome">Welcome</string>
+    <string name="landingAdminButton">Admin</string>
+    <string name="loginLogout">Logout</string>
+    <string name="admin_only">Admin Only</string>
+    <string name="landingSearchButton">Search</string>
+    <string name="landingCart">Cart</string>
+    <string name="testing_results">Testing results</string>
+    <string name="createEnterUsername">Enter Username</string>
+    <string name="please_sign_up">Please Sign Up</string>
+    <string name="createConfirm">Confirm</string>
+    <string name="createEnterPassword">Enter Password</string>
+
+</resources>

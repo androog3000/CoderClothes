@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    tools:ignore="ExtraText">
+
+
+    <!--original textView before testing out EditTexts
+    <EditText
+        android:id="@+id/enterUsername"
+        android:layout_width="216dp"
+        android:layout_height="103dp"
+
+        android:layout_marginTop="184dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Enter Username"
+        android:hint="@string/enter_username"
+        android:autofillHints="" />
+
+    <EditText
+       android:id="@+id/enterPassword"
+       android:layout_width="221dp"
+       android:layout_height="89dp"
+       android:ems="10"
+       android:gravity="center"
+       android:inputType="numberSigned|text"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.484"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="parent"
+       app:layout_constraintVertical_bias="0.14"
+       tools:text="Enter Password"
+       tools:ignore="TextFields"
+       android:hint="@string/enter_password"
+       android:autofillHints="" />
+       -->
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="199dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="52dp"
+        android:gravity="center"
+        android:hint="@string/usernameHint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+       />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="194dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="52dp"
+        android:gravity="center"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/loginEnter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/loginScreen"
+        android:layout_width="97dp"
+        android:layout_height="73dp"
+        android:gravity="center"
+        android:text="@string/LoginPageHeader"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <Button
+        android:id="@+id/loginEnter"
+        android:layout_width="179dp"
+        android:layout_height="107dp"
+        android:layout_marginBottom="208dp"
+        android:text="@string/LoginPageEnterButton"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/loginGood"
+        android:layout_width="165dp"
+        android:layout_height="25dp"
+        android:gravity="center"
+        android:text="Credentials accepted"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/loginBad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginEnter"
+        app:layout_constraintVertical_bias="0.259" />
+
+    <TextView
+        android:id="@+id/loginBad"
+        android:layout_width="145dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="72dp"
+        android:gravity="center"
+        android:text="Credentials rejected"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--  app:layout_constraintTop_toBottomOf="@+id/enterPassword" -->
+        app:layout_constraintVertical_bias="0.206" />
+    <!--        android:hint="@string/loginScreen"-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

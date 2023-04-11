@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LandingPageActivity">
+
+    <TextView
+        android:id="@+id/CoderClothesMainLogo"
+        android:layout_width="280dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="76dp"
+        android:gravity="center"
+        android:text="@string/coderClothesMainLogo"
+        android:textSize="44sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/landingWelcome"
+        android:layout_width="146dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/landingWelcome"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CoderClothesMainLogo" />
+
+    <EditText
+        android:id="@+id/landingUsername"
+        android:layout_width="170dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingWelcome"
+        android:autofillHints=""
+        android:hint="@string/landingUsername"
+     />
+
+
+    <Button
+        android:id="@+id/landingAdminButton"
+        android:layout_width="178dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/landingAdminButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingUsername"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:text="@string/loginLogout"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAdmin"
+        app:layout_constraintEnd_toEndOf="@+id/landingCart"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/landingCart" />
+
+    <Button
+        android:id="@+id/buttonAdmin"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/admin_only"
+
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/landingSearch"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+
+        android:layout_marginTop="32dp"
+        android:gravity="center|center_vertical"
+        android:text="@string/landingSearchButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingUsername" />
+
+    <Button
+        android:id="@+id/landingCart"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:gravity="center|center_vertical"
+        android:text="@string/landingCart"
+        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingSearch"
+        app:layout_constraintVertical_bias="0.507" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
