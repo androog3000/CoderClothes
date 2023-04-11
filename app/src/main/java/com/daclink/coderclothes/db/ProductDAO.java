@@ -32,4 +32,5 @@ public interface ProductDAO {
     @Query("SELECT * FROM " + AppDatabase.PRODUCT_TABLE)
     List<Product> getAllProducts();
 
+
 }
