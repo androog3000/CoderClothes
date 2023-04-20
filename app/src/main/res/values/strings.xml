@@ -25,5 +25,32 @@
     <string name="please_sign_up">Please Sign Up</string>
     <string name="createConfirm">Confirm</string>
     <string name="createEnterPassword">Enter Password</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="pajamas">Pajamas</string>
+    <string name="pants">Pants</string>
+    <string name="glasses">Glasses</string>
+    <string name="PJsAddToCart">Add to cart</string>
+    <string name="PantsAddToCart">Add to cart</string>
+    <string name="add_to_cart_glasses">Add to cart</string>
+    <string name="products">Products</string>
+    <string name="beverage">Beverage</string>
+    <string name="programmasPajamasButton">Programma\'s Pajamas</string>
+    <string name="add_to_cart1">Add To Cart</string>
+    <string name="coderoy_pants">Coderoy Pants</string>
+    <string name="add_to_cart2">Add To Cart</string>
+    <string name="searchGlassesButton">See-Sharp Blue Lens Glasses</string>
+    <string name="add_to_cart3">Add To Cart</string>
+    <string name="memory_leak_alkaline_beverage">Memory Leak Alkaline Beverage</string>
+    <string name="add_to_cart4">Add To Cart</string>
+    <string name="go_to_cart">Go To Cart</string>
+    <string name="product_catalog">Product Catalog</string>
+    <string name="searchCoderClothesLogo">CoderClothes</string>
+    <string name="programma_s_pajamas">Programma\'s Pajamas</string>
+    <string name="coderoy_pants2">Coderoy Pants</string>
+    <string name="see_sharp_blue_lens_glasses">See-Sharp Blue-Lens Glasses</string>
+    <string name="more_info1">More Info</string>
+    <string name="more_info2">More Info</string>
+    <string name="more_info3">More Info</string>
+    <string name="more_info4">More Info</string>
 
 </resources>

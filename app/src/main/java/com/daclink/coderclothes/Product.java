@@ -14,13 +14,33 @@ public class Product {
 
     private String mProductName;
     private String mProductDescription;
-    private int mProductQuantity;
+    private double mProductPrice;
 
-    public Product(String productName, String productDescription, int productQuantity) {
+    //note: not worrying about this for now
+    //private int mProductQuantity;
+
+    public Product(String productName, String productDescription, double productPrice) {
         this.mProductName = productName;
         this.mProductDescription = productDescription;
-        this.mProductQuantity = productQuantity;
+        //note: not worrying about quantity of products in stock for now, consider adding back later
+        //this.mProductQuantity = productQuantity;
+        this.mProductPrice = productPrice;
+    }
 
+    public int getProductId() {
+        return mProductId;
+    }
+
+    public void setProductId(int mProductId) {
+        this.mProductId = mProductId;
+    }
+
+    public double getProductPrice() {
+        return mProductPrice;
+    }
+
+    public void setProductPrice(double mProductPrice) {
+        this.mProductPrice = mProductPrice;
     }
 
     public String getProductName() {
@@ -39,11 +59,16 @@ public class Product {
         this.mProductDescription = mProductDescription;
     }
 
-    public int getProductQuantity() {
-        return mProductQuantity;
+    @Override
+    public String toString() {
+        return  mProductName + " - $" + mProductPrice + "\n" + mProductDescription;
     }
 
-    public void setProductQuantity(int mProductQuantity) {
-        this.mProductQuantity = mProductQuantity;
-    }
+    //    public int getProductQuantity() {
+//        return mProductQuantity;
+//    }
+//
+//    public void setProductQuantity(int mProductQuantity) {
+//        this.mProductQuantity = mProductQuantity;
+//    }
 }

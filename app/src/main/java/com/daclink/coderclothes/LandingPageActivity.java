@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.ProductDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
 
 public class LandingPageActivity extends AppCompatActivity {
@@ -22,12 +23,14 @@ public class LandingPageActivity extends AppCompatActivity {
     private Button adminButton;
     private Button mLogoutButton;
     private Button cartButton;
+    private Button searchButton;
 
     private UserLog userLog;
     private UserLog userLogUsername;
     private UserLog userLogPassword;
 
     private UserLogDAO mUserLogDAO;
+    private ProductDAO mProductDAO;
 
     private LoginActivity loginActivity;
 
@@ -56,11 +59,11 @@ public class LandingPageActivity extends AppCompatActivity {
                 .build()
                 .getUserLogDAO();
 
-
         mEditTextUsername = findViewById(R.id.landingUsername);
         mLogoutButton = findViewById(R.id.logoutButton);
         adminButton = findViewById(R.id.buttonAdmin);
         cartButton = findViewById(R.id.landingCart);
+        searchButton = findViewById(R.id.landingSearch);
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
@@ -74,6 +77,44 @@ public class LandingPageActivity extends AppCompatActivity {
         if (prefUsername.equals("admin2")){
             adminButton.setVisibility(View.VISIBLE);
         }
+
+        //building product catalog
+        mProductDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getProductDAO();
+
+        Product pajamas = mProductDAO.getProductByName("Programma's Pajamas");
+        if (pajamas == null){
+            pajamas = new Product("Programma's Pajamas", "Comfortable and stylish. Perfect for the programmer who has no intentions of leaving the house today.", 19.99);
+            mProductDAO.insert(pajamas);
+        }
+
+        Product coderoys = mProductDAO.getProductByName("Coderoy Pants");
+        if (coderoys == null){
+            coderoys = new Product("Coderoy Pants", "Sure corduroys haven't been in style in over 20 years, but you're a coder, since when did you care about what's in style? They're comfortable and they have ridges.", 14.99);
+            mProductDAO.insert(coderoys);
+        }
+
+        Product glasses = mProductDAO.getProductByName("See-Sharp Blue-Lens Glasses");
+        if (glasses == null){
+            glasses = new Product("See-Sharp Blue-Lens Glasses", "Perfect for the coder who stares at the computer all day. These glasses provide contrast and clarity, so give your eyes a break.", 24.99);
+            mProductDAO.insert(glasses);
+        }
+
+        Product memoryLeak = mProductDAO.getProductByName("Memory Leak Alkaline Beverage");
+        if (memoryLeak == null){
+            memoryLeak = new Product("Memory Leak Alkaline Beverage", "Illegal in 9 countries, Memory Leak has occasionally been shown to improve the human brain's capacity for memory management. However, some consumers have complained of a sensation similar to a complete wiping of the hard drive. But with the release of the new Cherry Berry flavor, it's probably worth the risk", 4.99);
+            mProductDAO.insert(memoryLeak);
+        }
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingPageActivity.this, Search.class);
+                startActivity(intent);
+            }
+        });
 
         //testing out results temporarily by clicking on cart
         cartButton.setOnClickListener(new View.OnClickListener() {
