@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.daclink.coderclothes.Cart;
+import com.daclink.coderclothes.UserLog;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public interface CartDAO {
 
     @Query("SELECT * FROM " + AppDatabase.CART_TABLE + " WHERE mCartId = :cartId")
     Cart getCartById(int cartId);
+
+    @Query("SELECT * FROM " + AppDatabase.CART_TABLE + " WHERE pajamasName = :name")
+    Cart getItemByName(String name);
 
     @Query("SELECT * FROM " + AppDatabase.CART_TABLE)
     List<Cart> getAllCarts();

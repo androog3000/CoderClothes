@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.CartDAO;
 import com.daclink.coderclothes.db.ProductDAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Search extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class Search extends AppCompatActivity {
     private Button goToCart;
 
     private ProductDAO mProductDAO;
+    private CartDAO mCartDAO;
 
     private List<Product> productList;
 
@@ -36,12 +39,22 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        //DAO objects for Product and Cart tables
         mProductDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .getProductDAO();
 
+        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getCartDAO();
 
+        //testing cart info making it through database
+        Log.i("CheckSearch", mCartDAO.getAllCarts().toString());
+
+        //'More Info' button functionality
+        //Buttons trigger Toast messages for now to reveal Product Descriptions
         Product pajamas = mProductDAO.getProductByName("Programma's Pajamas");
         pajamaMoreInfo = findViewById(R.id.searchPajamasMoreInfo);
         pajamaMoreInfo.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +91,57 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        //wiring up Product 'Add to cart' buttons
+        pajamaAdd = findViewById(R.id.searchPajamasAdd);
+        pantsAdd = findViewById(R.id.searchPantsAdd);
+        glassesAdd = findViewById(R.id.searchGlassesAdd);
+        beverageAdd = findViewById(R.id.searchBeverageAdd);
+
+        Cart cart = mCartDAO.getAllCarts().get(0);
+
+        pajamaAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Search.this, "Adding Pajamas to Cart", Toast.LENGTH_SHORT).show();
+                int pajamaCount = cart.getPajamasQuantity();
+                pajamaCount++;
+                cart.setPajamasQuantity(pajamaCount);
+                Log.i("CheckCart", cart.toString());
+            }
+        });
+
+        pantsAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Search.this, "Adding Coderoys to Cart", Toast.LENGTH_SHORT).show();
+                int pantsCount = cart.getPantsQuantity();
+                pantsCount++;
+                cart.setPajamasQuantity(pantsCount);
+                Log.i("CheckCart", cart.toString());
+            }
+        });
+
+        glassesAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Search.this, "Adding Glasses to Cart", Toast.LENGTH_SHORT).show();
+                int glassesCount = cart.getGlassesQuantity();
+                glassesCount++;
+                cart.setGlassesQuantity(glassesCount);
+                Log.i("CheckCart", cart.toString());
+            }
+        });
+
+        beverageAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Search.this, "Adding Memory Leak to Cart", Toast.LENGTH_SHORT).show();
+                int beverageCount = cart.getBeverageQuantity();
+                beverageCount++;
+                cart.setBeverageQuantity(beverageCount);
+                Log.i("CheckCart", cart.toString());
+            }
+        });
 
 
     }

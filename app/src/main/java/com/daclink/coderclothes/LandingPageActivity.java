@@ -15,8 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.CartDAO;
 import com.daclink.coderclothes.db.ProductDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
+
+import java.util.HashMap;
 
 public class LandingPageActivity extends AppCompatActivity {
 
@@ -31,6 +34,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private UserLogDAO mUserLogDAO;
     private ProductDAO mProductDAO;
+    private CartDAO mCartDAO;
 
     private LoginActivity loginActivity;
 
@@ -107,6 +111,18 @@ public class LandingPageActivity extends AppCompatActivity {
             memoryLeak = new Product("Memory Leak Alkaline Beverage", "Illegal in 9 countries, Memory Leak has occasionally been shown to improve the human brain's capacity for memory management. However, some consumers have complained of a sensation similar to a complete wiping of the hard drive. But with the release of the new Cherry Berry flavor, it's probably worth the risk", 4.99);
             mProductDAO.insert(memoryLeak);
         }
+
+        //building Cart
+        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getCartDAO();
+
+        Cart cart = new Cart();
+        Log.i("Checks", cart.toString());
+
+        mCartDAO.insert(cart);
+
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override

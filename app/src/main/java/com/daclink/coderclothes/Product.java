@@ -16,16 +16,18 @@ public class Product {
     private String mProductDescription;
     private double mProductPrice;
 
-    //note: not worrying about this for now
-    //private int mProductQuantity;
+//    public Product(String productName, double productPrice){
+//        this.mProductName = productName;
+//        this.mProductPrice =  productPrice;
+//    }
 
     public Product(String productName, String productDescription, double productPrice) {
         this.mProductName = productName;
         this.mProductDescription = productDescription;
-        //note: not worrying about quantity of products in stock for now, consider adding back later
-        //this.mProductQuantity = productQuantity;
         this.mProductPrice = productPrice;
     }
+
+
 
     public int getProductId() {
         return mProductId;
