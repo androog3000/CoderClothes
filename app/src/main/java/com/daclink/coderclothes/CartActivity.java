@@ -21,23 +21,23 @@ public class CartActivity extends AppCompatActivity {
 
     private TextView usernameDisplay;
 
-    private EditText cart1Product;
-    private EditText cart1Price;
-    private EditText cart1Quantity;
+    private TextView cart1Product;
+    private TextView cart1Price;
+    private TextView cart1Quantity;
 
-    private EditText cart2Product;
-    private EditText cart2Price;
-    private EditText cart2Quantity;
+    private TextView cart2Product;
+    private TextView cart2Price;
+    private TextView cart2Quantity;
 
-    private EditText cart3Product;
-    private EditText cart3Price;
-    private EditText cart3Quantity;
+    private TextView cart3Product;
+    private TextView cart3Price;
+    private TextView cart3Quantity;
 
-    private EditText cart4Product;
-    private EditText cart4Price;
-    private EditText cart4Quantity;
+    private TextView cart4Product;
+    private TextView cart4Price;
+    private TextView cart4Quantity;
 
-    private EditText cartTotal;
+    private TextView cartTotal;
 
     private Button emptyCart;
     private Button completePurchase;
@@ -94,11 +94,6 @@ public class CartActivity extends AppCompatActivity {
 
         int quantityArray[] = new int[] {quantityPjs, quantityPants, quantityGlasses, quantityBeverage};
 
-//        ArrayList<Integer> cartQuantities = new ArrayList<>();
-//        cartQuantities.add(quantityPjs);
-//        cartQuantities.add(quantityPants);
-//        cartQuantities.add(quantityGlasses);
-//        cartQuantities.add(quantityBeverage);
 
         String productsArray[] = new String[] {"Programma's Pajamas", "Coderoy Pants", "See-Sharp Blue-Lens Glasses", "Memory Leak Alkaline Beverage"};
 
@@ -109,7 +104,7 @@ public class CartActivity extends AppCompatActivity {
 //        cartProducts.add("Memory Leak Alkaline Beverage");
 
         //sorting arrayLists together
-        //sorting cart quantities to popoulate CartActivity
+        //sorting cart quantities to help populate CartActivity
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3 - i; j++) {
                 if (quantityArray[j] < quantityArray[j+1]) {
@@ -126,9 +121,119 @@ public class CartActivity extends AppCompatActivity {
         Log.i("CheckCartActivity", productsArray[0] + " " + productsArray[1] + " " + productsArray[2] + " " + productsArray[3]);
         Log.i("CheckCartActivity", quantityArray[0] + " " + quantityArray[1] + " " + quantityArray[2] + " " + quantityArray[3]);
 
+        //now I have productArray and quantityArray sorted descending together
 
 
 
+        //assigning values to CartActivity layout
+        cart1Product = findViewById(R.id.cart1Product);
+        cart1Price = findViewById(R.id.cart1Price);
+        cart1Quantity = findViewById(R.id.cart1Quantity);
 
+        cart2Product = findViewById(R.id.cart2Product);
+        cart2Price = findViewById(R.id.cart2Price);
+        cart2Quantity = findViewById(R.id.cart2Quantity);
+
+        cart3Product = findViewById(R.id.cart3Product);
+        cart3Price = findViewById(R.id.cart3Price);
+        cart3Quantity = findViewById(R.id.cart3Quantity);
+
+        cart4Product = findViewById(R.id.cart4Product);
+        cart4Price = findViewById(R.id.cart4Price);
+        cart4Quantity = findViewById(R.id.cart4Quantity);
+
+
+        Log.i("CheckCartActivity", "quantityArray[0]: " + quantityArray[0]);
+
+        if (quantityArray[0] > 0) {
+            cart1Product.setText(productsArray[0]);
+            cart1Price.setText(getPriceString(productsArray[0]));
+            String quantity = String.valueOf(quantityArray[0]);
+            cart1Quantity.setText(quantity);
+        } else {
+            cart1Product.setText("");
+            cart1Price.setText("");
+            cart1Quantity.setText("");
+        }
+
+        if (quantityArray[1] > 0) {
+            cart2Product.setText(productsArray[1]);
+            cart2Price.setText(getPriceString(productsArray[1]));
+            String quantity = String.valueOf(quantityArray[1]);
+            cart2Quantity.setText(quantity);
+        } else {
+            cart2Product.setText("");
+            cart2Price.setText("");
+            cart2Quantity.setText("");
+        }
+
+        if (quantityArray[2] > 0) {
+            cart3Product.setText(productsArray[2]);
+            cart3Price.setText(getPriceString(productsArray[2]));
+            String quantity = String.valueOf(quantityArray[2]);
+            cart3Quantity.setText(quantity);
+        } else {
+            cart3Product.setText("");
+            cart3Price.setText("");
+            cart3Quantity.setText("");
+        }
+
+        if (quantityArray[3] > 0) {
+            cart4Product.setText(productsArray[3]);
+            cart4Price.setText(getPriceString(productsArray[3]));
+            String quantity = String.valueOf(quantityArray[3]);
+            cart4Quantity.setText(quantity);
+        } else {
+            Log.i("CheckCartActivity", "quantityArray[3] <= 0");
+            cart4Product.setText(" ");
+            cart4Price.setText(" ");
+            cart4Quantity.setText(" ");
+        }
+
+        //calculating cart total
+        cartTotal = findViewById(R.id.cartTotalDisplay);
+
+        double total = quantityArray[0] * getPriceDouble(productsArray[0]) +
+                        quantityArray[1] * getPriceDouble(productsArray[1]) +
+                        quantityArray[2] * getPriceDouble(productsArray[2]) +
+                        quantityArray[3] * getPriceDouble(productsArray[3]);
+
+        String totalString = String.valueOf(total);
+
+        cartTotal.setText("$" + totalString);
+
+
+    }
+
+    public double getPriceDouble (String name){
+        double price = 0;
+        if (name.equals("Programma's Pajamas")){
+            price = 19.99;
+        } else if (name.equals("Coderoy Pants")) {
+            price = 14.99;
+        } else if (name.equals("See-Sharp Blue-Lens Glasses")){
+            price = 24.99;
+        } else if (name.equals("Memory Leak Alkaline Beverage")) {
+            price = 4.99;
+        } else {
+            price = 0;
+        }
+        return price;
+    }
+
+    public String getPriceString (String name){
+        String price = "";
+        if (name.equals("Programma's Pajamas")){
+            price = "$19.99";
+        } else if (name.equals("Coderoy Pants")) {
+            price = "$14.99";
+        } else if (name.equals("See-Sharp Blue-Lens Glasses")){
+            price = "$24.99";
+        } else if (name.equals("Memory Leak Alkaline Beverage")) {
+            price = "$4.99";
+        } else {
+            price = "";
+        }
+        return price;
     }
 }
