@@ -70,6 +70,7 @@ public class LandingPageActivity extends AppCompatActivity {
                 .getCartDAO();
 
 
+
         mEditTextUsername = findViewById(R.id.landingUsername);
         mLogoutButton = findViewById(R.id.logoutButton);
         adminButton = findViewById(R.id.buttonAdmin);
@@ -81,6 +82,9 @@ public class LandingPageActivity extends AppCompatActivity {
 
         String prefUsername = sharedPreferences.getString(KEY_USERNAME, null);
         String prefPassword = sharedPreferences.getString(KEY_PASSWORD, null);
+
+        Log.i("CheckLanding", mCartDAO.getCartByName(prefUsername).toString());
+        Log.i("CheckLanding", mCartDAO.getAllCarts().toString());
 
         if (prefUsername != null) {
             mEditTextUsername.setText(prefUsername);

@@ -3,12 +3,15 @@ package com.daclink.coderclothes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
 import com.daclink.coderclothes.db.CartDAO;
@@ -151,9 +154,9 @@ public class CartActivity extends AppCompatActivity {
             String quantity = String.valueOf(quantityArray[0]);
             cart1Quantity.setText(quantity);
         } else {
-            cart1Product.setText("");
-            cart1Price.setText("");
-            cart1Quantity.setText("");
+            cart1Product.setText(" ");
+            cart1Price.setText(" ");
+            cart1Quantity.setText(" ");
         }
 
         if (quantityArray[1] > 0) {
@@ -162,9 +165,9 @@ public class CartActivity extends AppCompatActivity {
             String quantity = String.valueOf(quantityArray[1]);
             cart2Quantity.setText(quantity);
         } else {
-            cart2Product.setText("");
-            cart2Price.setText("");
-            cart2Quantity.setText("");
+            cart2Product.setText(" ");
+            cart2Price.setText(" ");
+            cart2Quantity.setText(" ");
         }
 
         if (quantityArray[2] > 0) {
@@ -173,9 +176,9 @@ public class CartActivity extends AppCompatActivity {
             String quantity = String.valueOf(quantityArray[2]);
             cart3Quantity.setText(quantity);
         } else {
-            cart3Product.setText("");
-            cart3Price.setText("");
-            cart3Quantity.setText("");
+            cart3Product.setText(" ");
+            cart3Price.setText(" ");
+            cart3Quantity.setText(" ");
         }
 
         if (quantityArray[3] > 0) {
@@ -190,7 +193,7 @@ public class CartActivity extends AppCompatActivity {
             cart4Quantity.setText(" ");
         }
 
-        //calculating cart total
+        //calculating and displaying cart total
         cartTotal = findViewById(R.id.cartTotalDisplay);
 
         double total = quantityArray[0] * getPriceDouble(productsArray[0]) +
@@ -198,9 +201,42 @@ public class CartActivity extends AppCompatActivity {
                         quantityArray[2] * getPriceDouble(productsArray[2]) +
                         quantityArray[3] * getPriceDouble(productsArray[3]);
 
-        String totalString = String.valueOf(total);
+        //String totalString = String.valueOf(total);
+        String formatTotal = String.format("%.2f", total);
 
-        cartTotal.setText("$" + totalString);
+        cartTotal.setText("$" + formatTotal);
+
+        //wiring up and adding functionality to buttons 'Empty Cart' and 'Complete Purchase'
+        emptyCart = findViewById(R.id.buttonEmpty);
+        completePurchase = findViewById(R.id.buttonComplete);
+
+        emptyCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CartActivity.this, "Cart emptied!", Toast.LENGTH_LONG).show();
+                cart.setPajamasQuantity(0);
+                cart.setPantsQuantity(0);
+                cart.setGlassesQuantity(0);
+                cart.setBeverageQuantity(0);
+                mCartDAO.update(cart);
+                Intent intent = new Intent(CartActivity.this, LandingPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        completePurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CartActivity.this, "Thank you for your purchase!", Toast.LENGTH_LONG).show();
+                cart.setPajamasQuantity(0);
+                cart.setPantsQuantity(0);
+                cart.setGlassesQuantity(0);
+                cart.setBeverageQuantity(0);
+                mCartDAO.update(cart);
+                Intent intent = new Intent(CartActivity.this, LandingPageActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
