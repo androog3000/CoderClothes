@@ -52,5 +52,33 @@
     <string name="more_info2">More Info</string>
     <string name="more_info3">More Info</string>
     <string name="more_info4">More Info</string>
+    <string name="product">Product</string>
+    <string name="quantity">Quantity</string>
+    <string name="total">Total</string>
+    <string name="cart_total">Cart Total</string>
+    <string name="complete_purchase">Complete Purchase</string>
+    <string name="empty_cart">Empty Cart</string>
+    <string name="cart">Cart</string>
+    <string name="item_subtotal">Item Subtotal</string>
+    <string name="cart_item_1">Cart Item 1</string>
+    <string name="cart_item_3">Cart Item 3</string>
+    <string name="cart_item_4">Cart Item 4</string>
+    <string name="username2">Username</string>
+    <string name="cart_item_2">Cart Item 2</string>
+    <string name="cartUsername">Username</string>
+    <string name="price">Price</string>
+    <string name="quantity2">Quantity</string>
+    <string name="cart_1_product">Cart 1 Product</string>
+    <string name="cart_1_price">Cart 1 Price</string>
+    <string name="cart_1_quantity">Cart 1 Quantity</string>
+    <string name="cart_2_product">Cart 2 Product</string>
+    <string name="cart_3_product">Cart 3 Product</string>
+    <string name="cart_3_price">Cart 3 Price</string>
+    <string name="cart_4_price">Cart 4 Price</string>
+    <string name="cart_4_quantity">Cart 4 Quantity</string>
+    <string name="cart_3_quantity">Cart 3 Quantity</string>
+    <string name="cart_2_quantity">Cart 2 Quantity</string>
+    <string name="cart_2_price">Cart 2 Price</string>
+    <string name="cart_4_product">Cart 4 Product</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.daclink.coderclothes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -107,6 +108,7 @@ public class Search extends AppCompatActivity {
         pantsAdd = findViewById(R.id.searchPantsAdd);
         glassesAdd = findViewById(R.id.searchGlassesAdd);
         beverageAdd = findViewById(R.id.searchBeverageAdd);
+        goToCart = findViewById(R.id.searchGoToCart);
 
         Cart cart = mCartDAO.getCartByName(prefUsername);
 
@@ -159,6 +161,15 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mCartDAO.update(cart);
+            }
+        });
+
+        goToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCartDAO.update(cart);
+                Intent intent = new Intent(Search.this, CartActivity.class);
+                startActivity(intent);
             }
         });
 
