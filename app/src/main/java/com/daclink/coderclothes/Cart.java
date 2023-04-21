@@ -15,6 +15,8 @@ public class Cart {
     @PrimaryKey(autoGenerate = true)
     private int mCartId;
 
+    private String cartName;
+
     private String pajamasName = "Programma's Pajamas";
     private double pajamasPrice = 19.99;
     private int pajamasQuantity = 0;
@@ -30,6 +32,18 @@ public class Cart {
     private String beverageName = "Memory Leak Alkaline Beverage";
     private double beveragePrice = 4.99;
     private int beverageQuantity = 0;
+
+    public Cart(String cartName) {
+        this.cartName = cartName;
+    }
+
+    public String getCartName() {
+        return cartName;
+    }
+
+//    public void setCartName(String cartName) {
+//        this.cartName = cartName;
+//    }
 
     //public Cart(){}
 
@@ -139,20 +153,20 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "mCartId=" + mCartId +
-                ", pajamasName='" + pajamasName + '\'' +
-                ", pajamasPrice=" + pajamasPrice +
-                ", pajamasQuantity=" + pajamasQuantity +
-                ", pantsName='" + pantsName + '\'' +
-                ", pantsPrice=" + pantsPrice +
-                ", pantsQuantity=" + pantsQuantity +
-                ", glassesName='" + glassesName + '\'' +
-                ", glassesPrice=" + glassesPrice +
-                ", glassesQuantity=" + glassesQuantity +
-                ", beverageName='" + beverageName + '\'' +
-                ", beveragePrice=" + beveragePrice +
-                ", beverageQuantity=" + beverageQuantity +
+        return "Cart Name: " + cartName +
+                ", Cart ID: " + mCartId + "\n" +
+                "{Product='" + pajamasName + '\'' +
+                ", Price=" + pajamasPrice +
+                ", Cart Quantity=" + pajamasQuantity +
+                ", Product='" + pantsName + '\'' +
+                ", Price=" + pantsPrice +
+                ", Cart Quantity=" + pantsQuantity +
+                ", Product='" + glassesName + '\'' +
+                ", Price=" + glassesPrice +
+                ", Cart Quantity=" + glassesQuantity +
+                ", Product='" + beverageName + '\'' +
+                ", Price=" + beveragePrice +
+                ", Cart Quantity=" + beverageQuantity +
                 '}';
     }
 }

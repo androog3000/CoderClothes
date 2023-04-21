@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.CartDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     //private UserLog user;
 
     private UserLogDAO mUserLogDAO;
+    private CartDAO mCartDAO;
 
     //sharedPreferences and keys
     SharedPreferences sharedPreferences;
@@ -45,6 +47,11 @@ public class CreateAccountActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build()
                 .getUserLogDAO();
+
+        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getCartDAO();
 
         enterUsername = findViewById(R.id.createUsername);
         enterPassword = findViewById(R.id.createPassword);
@@ -73,7 +80,12 @@ public class CreateAccountActivity extends AppCompatActivity {
                         editor.putString(KEY_USERNAME, username);
                         editor.apply();
 
-                        Log.i("Checks", mUserLogDAO.getAllUsers().toString());
+                        //creating cart for new user
+                        Cart userCart = mCartDAO.getCartByName(username);
+                        if (userCart == null){
+                            userCart = new Cart(username);
+                        }
+                        Log.i("CheckCreate", mCartDAO.getCartByName(username).toString());
 
                         Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
                         startActivity(intent);

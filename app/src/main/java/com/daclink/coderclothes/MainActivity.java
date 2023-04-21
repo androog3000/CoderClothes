@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.CartDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mMainDisplay;
 
     private UserLogDAO mUserLogDAO;
+    private CartDAO mCartDAO;
 
     private List<UserLog> mUserLogs;
 
@@ -59,10 +61,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //creating access to UserLog table to add default users
         mUserLogDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .getUserLogDAO();
+
+        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getCartDAO();
+
 
         //adding admin2
         UserLog userAdmin2 = mUserLogDAO.getUserByUsername("admin2");
@@ -74,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
             mUserLogDAO.insert(userAdmin2);
         }
 
+        //adding cart for Admin2
+        Cart cartAdmin2 = mCartDAO.getCartByName("admin2");
+        if (cartAdmin2 == null){
+            cartAdmin2 = new Cart("admin2");
+            mCartDAO.insert(cartAdmin2);
+        }
+        Log.i("CheckAdminCart", "admin2 cart: " + cartAdmin2.toString());
+
+
         //adding testuser1
         UserLog userTestuser1 = mUserLogDAO.getUserByUsername("testuser1");
 
@@ -83,6 +101,16 @@ public class MainActivity extends AppCompatActivity {
             userTestuser1.setMPassword("testuser1");
             mUserLogDAO.insert(userTestuser1);
         }
+
+        //adding cart for testuser1
+        Cart cartTestuser1 = mCartDAO.getCartByName("testuser1");
+        if (cartTestuser1 == null){
+            cartTestuser1 = new Cart("testuser1");
+            mCartDAO.insert(cartTestuser1);
+        }
+        Log.i("CheckTestuserCart", "testuser1 cart: " + cartTestuser1.toString());
+
+
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
@@ -97,15 +125,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Checks", "shared pref username was null");
         }
 
-        //TODO: from Dr. C videos commenting out for now
-        //checkForUser();
 
-        //TODO: from Dr. C videos commenting out for now
-        //loginUser(mUserId);
-
-        //TODO: check later to add these
-        //mMainDisplay = findViewById(R.id.mainCoderClothesDisplay);
-        //mMainDisplay.setMovementMethod(new ScrollingMovementMethod());
 
         //if not already directed to landing page, directed now
         buttonMainLogin = findViewById(R.id.mainLoginButton);

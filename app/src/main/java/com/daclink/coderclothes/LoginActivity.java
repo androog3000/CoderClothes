@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
+import com.daclink.coderclothes.db.CartDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordField;
 
     private UserLogDAO mUserLogDAO;
+    private CartDAO mCartDAO;
 
     private String mUsername;
     private String mPassword;
@@ -125,7 +127,9 @@ public class LoginActivity extends AppCompatActivity {
                     //UserLog object = UserLogDAO object.method()
                     userLogUsername = mUserLogDAO.getUserByUsername(mUsername);
 
-                    Log.i("Checks", mUserLogDAO.getAllUsers().toString());
+
+
+                    Log.i("CheckLogin", mUserLogDAO.getAllUsers().toString());
 
                     if (userLogUsername == null) {
                         Toast.makeText(LoginActivity.this, "Account not found", Toast.LENGTH_SHORT).show();
@@ -136,13 +140,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
 
-//                //temporary fix to login default users
-//                if(mUsername.equals("admin2") && mPassword.equals("admin2") || mUsername.equals("testuser1") && mPassword.equals("testuser1")){
-//                    Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "Account not found", Toast.LENGTH_SHORT).show();
-//                }
 
                 }
             });
@@ -176,20 +173,6 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
                     startActivity(intent);
                 }
-//                if(checkForUserInDatabase()){
-//
-//                    if(!validatePassword()){
-//                        Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        //my attempt
-//                        Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
-//                        startActivity(intent);
-//
-//                        //originally from demo videos
-////                        Intent intent = MainActivity.intentFactory(getApplicationContext(), mUser.getMUserId());
-////                        startActivity(intent);
-//                    }
-//                }
             }
         });
     }

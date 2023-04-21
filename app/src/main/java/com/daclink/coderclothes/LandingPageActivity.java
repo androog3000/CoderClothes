@@ -20,6 +20,7 @@ import com.daclink.coderclothes.db.ProductDAO;
 import com.daclink.coderclothes.db.UserLogDAO;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class LandingPageActivity extends AppCompatActivity {
 
@@ -57,17 +58,24 @@ public class LandingPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
 
-        //previously getDatabase();
+        //DAOs
         mUserLogDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .getUserLogDAO();
+
+        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getCartDAO();
+
 
         mEditTextUsername = findViewById(R.id.landingUsername);
         mLogoutButton = findViewById(R.id.logoutButton);
         adminButton = findViewById(R.id.buttonAdmin);
         cartButton = findViewById(R.id.landingCart);
         searchButton = findViewById(R.id.landingSearch);
+
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
@@ -112,17 +120,6 @@ public class LandingPageActivity extends AppCompatActivity {
             mProductDAO.insert(memoryLeak);
         }
 
-        //building Cart
-        mCartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getCartDAO();
-
-        Cart cart = new Cart();
-        Log.i("Checks", cart.toString());
-
-        mCartDAO.insert(cart);
-
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +133,9 @@ public class LandingPageActivity extends AppCompatActivity {
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LandingPageActivity.this, "Testing for toast", Toast.LENGTH_SHORT).show();
+                Log.i("Check", mCartDAO.getCartByName(prefUsername).toString());
             }
         });
-
 
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
@@ -155,12 +151,15 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         });
 
-    }
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Cart> carts = mCartDAO.getAllCarts();
+                for (Cart c : carts){
+                    Log.i("CheckingCarts", c.toString());
+                }
+            }
+        });
 
-    private void getDatabase() {
-        mUserLogDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getUserLogDAO();
     }
 }

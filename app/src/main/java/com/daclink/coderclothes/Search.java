@@ -3,6 +3,7 @@ package com.daclink.coderclothes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,10 +35,20 @@ public class Search extends AppCompatActivity {
 
     private List<Product> productList;
 
+    //sharedPreferences and keys as recommended from outside sources
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PASSWORD = "password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        //shared preferences to help cart assignment
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String prefUsername = sharedPreferences.getString(KEY_USERNAME, null);
 
         //DAO objects for Product and Cart tables
         mProductDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
@@ -97,7 +108,7 @@ public class Search extends AppCompatActivity {
         glassesAdd = findViewById(R.id.searchGlassesAdd);
         beverageAdd = findViewById(R.id.searchBeverageAdd);
 
-        Cart cart = mCartDAO.getAllCarts().get(0);
+        Cart cart = mCartDAO.getCartByName(prefUsername);
 
         pajamaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +127,7 @@ public class Search extends AppCompatActivity {
                 Toast.makeText(Search.this, "Adding Coderoys to Cart", Toast.LENGTH_SHORT).show();
                 int pantsCount = cart.getPantsQuantity();
                 pantsCount++;
-                cart.setPajamasQuantity(pantsCount);
+                cart.setPantsQuantity(pantsCount);
                 Log.i("CheckCart", cart.toString());
             }
         });
@@ -143,6 +154,13 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        goToCart = findViewById(R.id.searchGoToCart);
+        goToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCartDAO.update(cart);
+            }
+        });
 
     }
 }
