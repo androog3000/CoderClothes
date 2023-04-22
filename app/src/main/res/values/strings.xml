@@ -80,5 +80,10 @@
     <string name="cart_2_quantity">Cart 2 Quantity</string>
     <string name="cart_2_price">Cart 2 Price</string>
     <string name="cart_4_product">Cart 4 Product</string>
+    <string name="user_info">User Info</string>
+    <string name="go_back">Go Back</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="userInfoUsername">Username</string>
+    <string name="UserInfoPassword">Password</string>
 
 </resources>

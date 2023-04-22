@@ -110,7 +110,9 @@ public class Search extends AppCompatActivity {
         beverageAdd = findViewById(R.id.searchBeverageAdd);
         goToCart = findViewById(R.id.searchGoToCart);
 
+        Log.i("CheckSearch", prefUsername);
         Cart cart = mCartDAO.getCartByName(prefUsername);
+        Log.i("CheckSearch", cart.toString());
 
         pajamaAdd.setOnClickListener(new View.OnClickListener() {
             @Override

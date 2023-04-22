@@ -65,8 +65,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String username = enterUsername.getText().toString();
                 String password = enterPassword.getText().toString();
 
-                Log.i("Checks", mUserLogDAO.getAllUsers().toString());
-
                 UserLog user = mUserLogDAO.getUserByUsername(username);
 
                 if(user != null){
@@ -75,6 +73,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if ( !(username.isEmpty()) && !(password.isEmpty()) ) {
                         user = new UserLog(username, password, false);
                         mUserLogDAO.insert(user);
+                        Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(KEY_USERNAME, username);
@@ -84,8 +83,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         Cart userCart = mCartDAO.getCartByName(username);
                         if (userCart == null){
                             userCart = new Cart(username);
+                            mCartDAO.insert(userCart);
                         }
-                        Log.i("CheckCreate", mCartDAO.getCartByName(username).toString());
 
                         Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
                         startActivity(intent);

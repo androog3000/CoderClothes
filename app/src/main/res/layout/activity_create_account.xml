@@ -55,7 +55,7 @@
         android:id="@+id/createPassword"
         android:layout_width="240dp"
         android:layout_height="80dp"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:gravity="center"
         android:hint="@string/createEnterPassword"
         app:layout_constraintBottom_toTopOf="@id/createConfirm"

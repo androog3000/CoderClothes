@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
             cartAdmin2 = new Cart("admin2");
             mCartDAO.insert(cartAdmin2);
         }
-        Log.i("CheckAdminCart", "admin2 cart: " + cartAdmin2.toString());
-
 
         //adding testuser1
         UserLog userTestuser1 = mUserLogDAO.getUserByUsername("testuser1");
@@ -108,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
             cartTestuser1 = new Cart("testuser1");
             mCartDAO.insert(cartTestuser1);
         }
-        Log.i("CheckTestuserCart", "testuser1 cart: " + cartTestuser1.toString());
 
-
+        Log.i("CheckMain", mUserLogDAO.getAllUsers().toString());
+        Log.i("CheckMain", mCartDAO.getAllCarts().toString());
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
@@ -124,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.i("Checks", "shared pref username was null");
         }
-
 
 
         //if not already directed to landing page, directed now
@@ -149,15 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
     //end of onCreate
     }
-
-//    private void loginUser(int userId) {
-//        //check if user Id is valid
-//        mUser = mUserLogDAO.getUserLogsById(userId);
-//        //check if mUser is not null
-//        addUserToPreference(mUserId);
-//        invalidateOptionsMenu();
-//    }
-
 
 
     //--------methods below may or may not be needed, here for reference-------

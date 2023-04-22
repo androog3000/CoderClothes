@@ -94,17 +94,11 @@ public class CartActivity extends AppCompatActivity {
         quantityBeverage = cart.getBeverageQuantity();
 
 
-
         int quantityArray[] = new int[] {quantityPjs, quantityPants, quantityGlasses, quantityBeverage};
 
 
         String productsArray[] = new String[] {"Programma's Pajamas", "Coderoy Pants", "See-Sharp Blue-Lens Glasses", "Memory Leak Alkaline Beverage"};
 
-//        ArrayList<String> cartProducts = new ArrayList<>();
-//        cartProducts.add("Programma's Pajamas");
-//        cartProducts.add("Coderoy Pants");
-//        cartProducts.add("See-Sharp Blue-Lens Glasses");
-//        cartProducts.add("Memory Leak Alkaline Beverage");
 
         //sorting arrayLists together
         //sorting cart quantities to help populate CartActivity
@@ -125,7 +119,6 @@ public class CartActivity extends AppCompatActivity {
         Log.i("CheckCartActivity", quantityArray[0] + " " + quantityArray[1] + " " + quantityArray[2] + " " + quantityArray[3]);
 
         //now I have productArray and quantityArray sorted descending together
-
 
 
         //assigning values to CartActivity layout

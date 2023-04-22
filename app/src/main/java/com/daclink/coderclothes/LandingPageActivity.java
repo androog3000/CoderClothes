@@ -83,8 +83,6 @@ public class LandingPageActivity extends AppCompatActivity {
         String prefUsername = sharedPreferences.getString(KEY_USERNAME, null);
         String prefPassword = sharedPreferences.getString(KEY_PASSWORD, null);
 
-        Log.i("CheckLanding", mCartDAO.getCartByName(prefUsername).toString());
-        Log.i("CheckLanding", mCartDAO.getAllCarts().toString());
 
         if (prefUsername != null) {
             mEditTextUsername.setText(prefUsername);
@@ -162,6 +160,17 @@ public class LandingPageActivity extends AppCompatActivity {
                 for (Cart c : carts){
                     Log.i("CheckingCarts", c.toString());
                 }
+            }
+        });
+
+        //note that cartButton is in fact button to UserInfoActivity, I was too lazy to rename it and redo constraint ID assignments in layout file
+        cartButton = findViewById(R.id.landingCart);
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("CheckLanding", "User Info button all good");
+                Intent intent = new Intent(LandingPageActivity.this, UserInfoActivity.class);
+                startActivity(intent);
             }
         });
 
