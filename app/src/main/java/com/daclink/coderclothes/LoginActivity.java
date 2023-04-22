@@ -62,9 +62,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
 
-//not sure if following fields are needed on this activity
-//    private List<UserLog> mUserLogs;
-//    private int mUserId = -1;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //connectDisplay();
-        //
+
         mUsernameField = findViewById(R.id.editTextUsername);
         mPasswordField = findViewById(R.id.editTextPassword);
         mLoginEnterButton = findViewById(R.id.loginEnter);
@@ -83,27 +80,6 @@ public class LoginActivity extends AppCompatActivity {
         String prefUsername = sharedPreferences.getString(KEY_USERNAME, null);
         //String prefPassword = sharedPreferences.getString(KEY_PASSWORD, null);
 
-        //loginButton onClickListener alternate
-//        mLoginEnterButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SharedPreferences.Editor editor = sharedPreferences.edit();
-//                editor.putString(KEY_USERNAME, mUsernameField.getText().toString());
-//                editor.putString(KEY_PASSWORD, mPasswordField.getText().toString());
-//                editor.apply();
-//                if ((mUsernameField.getText().toString().equals("admin2") && mPasswordField.getText().toString().equals("admin2")) ||
-//                    (mUsernameField.getText().toString().equals("testuser1") && mPasswordField.getText().toString().equals("testuser1"))) {
-//
-//                    Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
-//                    startActivity(intent);
-//
-//                    Toast.makeText(LoginActivity.this, "Avocado Toast!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "Account not found", Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//        });
 
         //getDatabase();
         mUserLogDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
@@ -124,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
                     mPassword = mPasswordField.getText().toString();
 
                     //assigning UserLog object to DataAccessObject method for String mUsername
-                    //UserLog object = UserLogDAO object.method()
                     userLogUsername = mUserLogDAO.getUserByUsername(mUsername);
 
 
