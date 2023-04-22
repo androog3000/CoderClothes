@@ -157,7 +157,8 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i("CheckLandingPage", mUserLogDAO.getAllUsers().toString());
-                Toast.makeText(LandingPageActivity.this, "Avocado Toast", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LandingPageActivity.this, "List of all current users: \n" + mUserLogDAO.getAllUsers().toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(LandingPageActivity.this, "Avocado Toast", Toast.LENGTH_SHORT).show();
             }
         });
 
