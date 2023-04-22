@@ -19,24 +19,48 @@
         app:layout_constraintBottom_toTopOf="@id/searchProductCatalog"
         app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173" />
 
     <TextView
         android:id="@+id/searchProductCatalog"
         android:layout_width="151dp"
         android:layout_height="30dp"
 
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/product_catalog"
         android:textSize="18sp"
         android:textStyle="bold"
-
-        app:layout_constraintBottom_toTopOf="@+id/searchPajamasMoreInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchLogo" />
 
-        app:layout_constraintTop_toBottomOf="@+id/searchLogo" />
+    <Button
+        android:id="@+id/searchBeverageAdd"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        android:layout_marginBottom="128dp"
+        android:text="@string/add_to_cart1"
+        app:layout_constraintBottom_toTopOf="@id/searchGoToCart"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        app:layout_constraintStart_toEndOf="@id/searchBeverageMoreInfo" />
+
+    <Button
+        android:id="@+id/searchPantsMoreInfo"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+
+        android:layout_marginBottom="40dp"
+        android:text="@string/more_info2"
+        app:layout_constraintBottom_toTopOf="@id/searchGlassesMoreInfo"
+        app:layout_constraintEnd_toStartOf="@id/searchPantsAdd"
+        app:layout_constraintStart_toEndOf="@id/searchPants" />
 
     <Button
         android:id="@+id/searchPajamasAdd"
@@ -44,101 +68,23 @@
         android:layout_height="60dp"
 
         android:text="@string/add_to_cart1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchProductCatalog"
         app:layout_constraintBottom_toTopOf="@id/searchPantsAdd"
-        app:layout_constraintStart_toEndOf="@id/searchPajamasMoreInfo"/>
-
-    <Button
-        android:id="@+id/searchBeverageAdd"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-
-        android:text="@string/add_to_cart1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchGlassesAdd"
-        app:layout_constraintStart_toEndOf="@id/searchBeverageMoreInfo"
-        app:layout_constraintBottom_toTopOf="@id/searchGoToCart"
-
-        />
+        app:layout_constraintStart_toEndOf="@id/searchPajamasMoreInfo"
+        app:layout_constraintTop_toBottomOf="@+id/searchProductCatalog"
+        app:layout_constraintVertical_bias="0.749" />
 
     <Button
         android:id="@+id/searchPantsAdd"
         android:layout_width="100dp"
         android:layout_height="60dp"
 
+        android:layout_marginBottom="40dp"
         android:text="@string/add_to_cart1"
+        app:layout_constraintBottom_toTopOf="@id/searchGlassesAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/searchPantsMoreInfo"
-        app:layout_constraintTop_toBottomOf="@+id/searchPajamasAdd"
-        app:layout_constraintBottom_toTopOf="@id/searchGlassesAdd"/>
-
-    <Button
-        android:id="@+id/searchGlassesAdd"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-
-        android:text="@string/add_to_cart1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchGlassesMoreInfo"
-        app:layout_constraintTop_toBottomOf="@+id/searchPantsAdd"
-        app:layout_constraintBottom_toTopOf="@id/searchBeverageAdd"/>
-
-    <TextView
-        android:id="@+id/searchPajamas"
-        android:layout_width="160dp"
-        android:layout_height="74dp"
-
-        android:gravity="center"
-        android:text="@string/programma_s_pajamas"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/searchPajamasMoreInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchProductCatalog"
-        app:layout_constraintBottom_toTopOf="@id/searchPants"/>
-
-    <TextView
-        android:id="@+id/searchPants"
-        android:layout_width="160dp"
-        android:layout_height="53dp"
-
-        android:gravity="center"
-        android:text="@string/coderoy_pants2"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/searchPantsMoreInfo"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchPajamas"
-        app:layout_constraintBottom_toTopOf="@id/searchGlasses"/>
-
-    <TextView
-        android:id="@+id/searchGlasses"
-        android:layout_width="160dp"
-        android:layout_height="81dp"
-
-        android:gravity="center"
-        android:text="@string/see_sharp_blue_lens_glasses"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/searchBeverage"
-        app:layout_constraintEnd_toStartOf="@id/searchGlassesMoreInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchPants" />
-
-    <TextView
-        android:id="@+id/searchBeverage"
-        android:layout_width="163dp"
-        android:layout_height="64dp"
-
-        android:gravity="center"
-        android:text="@string/memory_leak_alkaline_beverage"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchGoToCart"
-        app:layout_constraintEnd_toStartOf="@id/searchBeverageMoreInfo"
-
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchGlasses" />
+        app:layout_constraintStart_toEndOf="@+id/searchPantsMoreInfo" />
 
     <Button
         android:id="@+id/searchPajamasMoreInfo"
@@ -149,54 +95,123 @@
         app:layout_constraintBottom_toTopOf="@id/searchPantsMoreInfo"
         app:layout_constraintEnd_toStartOf="@+id/searchPajamasAdd"
         app:layout_constraintStart_toEndOf="@id/searchPajamas"
-        app:layout_constraintTop_toBottomOf="@id/searchProductCatalog" />
+        app:layout_constraintTop_toBottomOf="@id/searchProductCatalog"
+        app:layout_constraintVertical_bias="0.749" />
 
-    <Button
-        android:id="@+id/searchBeverageMoreInfo"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
+    <TextView
+        android:id="@+id/searchBeverage"
+        android:layout_width="163dp"
+        android:layout_height="64dp"
 
-        android:text="@string/more_info4"
-        app:layout_constraintBottom_toTopOf="@id/searchGoToCart"
-        app:layout_constraintEnd_toStartOf="@+id/searchBeverageAdd"
-        app:layout_constraintStart_toEndOf="@id/searchBeverage"
-        app:layout_constraintTop_toBottomOf="@+id/searchGlassesMoreInfo" />
+        android:layout_marginBottom="124dp"
+        android:gravity="center"
+        android:text="@string/memory_leak_alkaline_beverage"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/searchGoToCart"
+
+        app:layout_constraintEnd_toStartOf="@id/searchBeverageMoreInfo"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/searchGlasses"
+        android:layout_width="160dp"
+        android:layout_height="81dp"
+
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="@string/see_sharp_blue_lens_glasses"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/searchBeverage"
+        app:layout_constraintEnd_toStartOf="@id/searchGlassesMoreInfo"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/searchGlassesMoreInfo"
         android:layout_width="80dp"
         android:layout_height="60dp"
 
+        android:layout_marginBottom="48dp"
         android:text="@string/more_info3"
         app:layout_constraintBottom_toTopOf="@id/searchBeverageMoreInfo"
         app:layout_constraintEnd_toStartOf="@id/searchGlassesAdd"
-        app:layout_constraintStart_toEndOf="@+id/searchGlasses"
-        app:layout_constraintTop_toBottomOf="@+id/searchPantsMoreInfo" />
+        app:layout_constraintStart_toEndOf="@+id/searchGlasses" />
+
+    <TextView
+        android:id="@+id/searchPants"
+        android:layout_width="160dp"
+        android:layout_height="53dp"
+
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="@string/coderoy_pants2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/searchGlasses"
+        app:layout_constraintEnd_toStartOf="@+id/searchPantsMoreInfo"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/searchPajamas"
+        android:layout_width="160dp"
+        android:layout_height="74dp"
+
+        android:gravity="center"
+        android:text="@string/programma_s_pajamas"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/searchPants"
+        app:layout_constraintEnd_toStartOf="@+id/searchPajamasMoreInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchProductCatalog"
+        app:layout_constraintVertical_bias="0.781" />
 
     <Button
-        android:id="@+id/searchPantsMoreInfo"
+        android:id="@+id/searchBeverageMoreInfo"
         android:layout_width="80dp"
         android:layout_height="60dp"
 
-        android:text="@string/more_info2"
-        app:layout_constraintTop_toBottomOf="@+id/searchPajamasMoreInfo"
-        app:layout_constraintStart_toEndOf="@id/searchPants"
-        app:layout_constraintEnd_toStartOf="@id/searchPantsAdd"
-        app:layout_constraintBottom_toTopOf="@id/searchGlassesMoreInfo"
-        />
+        android:layout_marginBottom="128dp"
+        android:text="@string/more_info4"
+        app:layout_constraintBottom_toTopOf="@id/searchGoToCart"
+        app:layout_constraintEnd_toStartOf="@+id/searchBeverageAdd"
+        app:layout_constraintStart_toEndOf="@id/searchBeverage" />
+
+    <Button
+        android:id="@+id/searchGlassesAdd"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        android:layout_marginBottom="48dp"
+        android:text="@string/add_to_cart1"
+        app:layout_constraintBottom_toTopOf="@id/searchBeverageAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchGlassesMoreInfo" />
 
     <Button
         android:id="@+id/searchGoToCart"
         android:layout_width="135dp"
         android:layout_height="59dp"
 
+        android:layout_marginBottom="24dp"
         android:text="@string/go_to_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/moreInfoPopup"
+        android:layout_width="329dp"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/searchBeverageMoreInfo"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.843" />
 
 
     <!--

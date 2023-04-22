@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daclink.coderclothes.db.AppDatabase;
@@ -33,6 +34,8 @@ public class Search extends AppCompatActivity {
 
     private ProductDAO mProductDAO;
     private CartDAO mCartDAO;
+
+    private TextView popup;
 
     private List<Product> productList;
 
@@ -65,6 +68,8 @@ public class Search extends AppCompatActivity {
         //testing cart info making it through database
         Log.i("CheckSearch", mCartDAO.getAllCarts().toString());
 
+        popup = findViewById(R.id.moreInfoPopup);
+
         //'More Info' button functionality
         //Buttons trigger Toast messages for now to reveal Product Descriptions
         Product pajamas = mProductDAO.getProductByName("Programma's Pajamas");
@@ -72,7 +77,15 @@ public class Search extends AppCompatActivity {
         pajamaMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Search.this, pajamas.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(Search.this, pajamas.toString(), Toast.LENGTH_LONG).show();
+                if (popup.getVisibility() == View.INVISIBLE){
+                    popup.setText(pajamas.toString());
+                    popup.setVisibility(View.VISIBLE);
+                } else {
+                    popup.setText(" ");
+                    popup.setVisibility(View.INVISIBLE);
+                }
+
             }
         });
 
@@ -81,7 +94,14 @@ public class Search extends AppCompatActivity {
         pantsMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Search.this, pants.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(Search.this, pants.toString(), Toast.LENGTH_LONG).show();
+                if (popup.getVisibility() == View.INVISIBLE){
+                    popup.setText(pants.toString());
+                    popup.setVisibility(View.VISIBLE);
+                } else {
+                    popup.setText(" ");
+                    popup.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
@@ -90,7 +110,14 @@ public class Search extends AppCompatActivity {
         glassesMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Search.this, glasses.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(Search.this, glasses.toString(), Toast.LENGTH_LONG).show();
+                if (popup.getVisibility() == View.INVISIBLE){
+                    popup.setText(glasses.toString());
+                    popup.setVisibility(View.VISIBLE);
+                } else {
+                    popup.setText(" ");
+                    popup.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
@@ -99,7 +126,14 @@ public class Search extends AppCompatActivity {
         beverageMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Search.this, beverage.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(Search.this, beverage.toString(), Toast.LENGTH_LONG).show();
+                if (popup.getVisibility() == View.INVISIBLE){
+                    popup.setText(beverage.toString());
+                    popup.setVisibility(View.VISIBLE);
+                } else {
+                    popup.setText(" ");
+                    popup.setVisibility(View.INVISIBLE);
+                }
             }
         });
 

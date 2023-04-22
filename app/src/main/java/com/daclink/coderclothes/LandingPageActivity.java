@@ -106,19 +106,19 @@ public class LandingPageActivity extends AppCompatActivity {
 
         Product coderoys = mProductDAO.getProductByName("Coderoy Pants");
         if (coderoys == null){
-            coderoys = new Product("Coderoy Pants", "Sure corduroys haven't been in style in over 20 years, but you're a coder, since when did you care about what's in style? They're comfortable and they have ridges.", 14.99);
+            coderoys = new Product("Coderoy Pants", "Sure corduroys haven't been in style in at least 20 years, but you're a coder, since when did you care about what's stylish? They're comfortable and they have ridges.", 14.99);
             mProductDAO.insert(coderoys);
         }
 
         Product glasses = mProductDAO.getProductByName("See-Sharp Blue-Lens Glasses");
         if (glasses == null){
-            glasses = new Product("See-Sharp Blue-Lens Glasses", "Perfect for the coder who stares at the computer all day. These glasses provide contrast and clarity, so give your eyes a break.", 24.99);
+            glasses = new Product("See-Sharp Blue-Lens Glasses", "Perfect for the coder who stares at the computer all day. These glasses provide contrast and clarity, so give your eyes a break, even when you can't take one", 24.99);
             mProductDAO.insert(glasses);
         }
 
         Product memoryLeak = mProductDAO.getProductByName("Memory Leak Alkaline Beverage");
         if (memoryLeak == null){
-            memoryLeak = new Product("Memory Leak Alkaline Beverage", "Illegal in 9 countries, Memory Leak has occasionally been shown to improve the human brain's capacity for memory management. However, some consumers have complained of a sensation similar to a complete wiping of the hard drive. But with the release of the new Cherry Berry flavor, it's probably worth the risk", 4.99);
+            memoryLeak = new Product("Memory Leak Alkaline Beverage", "Illegal in 9 countries, Memory Leak has occasionally been shown to improve the human brain's capacity for memory management. However, some consumers have complained of a sensation similar to a complete wiping of the hard drive.", 4.99);
             mProductDAO.insert(memoryLeak);
         }
 
@@ -156,10 +156,8 @@ public class LandingPageActivity extends AppCompatActivity {
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Cart> carts = mCartDAO.getAllCarts();
-                for (Cart c : carts){
-                    Log.i("CheckingCarts", c.toString());
-                }
+                Log.i("CheckLandingPage", mUserLogDAO.getAllUsers().toString());
+                Toast.makeText(LandingPageActivity.this, "Avocado Toast", Toast.LENGTH_SHORT).show();
             }
         });
 
