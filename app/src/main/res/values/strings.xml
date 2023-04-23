@@ -85,5 +85,6 @@
     <string name="delete_account">Delete Account</string>
     <string name="userInfoUsername">Username</string>
     <string name="UserInfoPassword">Password</string>
+    <string name="admin_additional_functionality">Admin Additional Functionality</string>
 
 </resources>

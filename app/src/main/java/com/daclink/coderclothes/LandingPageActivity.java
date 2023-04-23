@@ -44,6 +44,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private EditText mEditTextUsername;
     private TextView mTextViewUsername;
     private TextView logo;
+    private TextView adminOnlyText;
 
 
     //sharedPreferences and keys as recommended from outside sources
@@ -58,6 +59,7 @@ public class LandingPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
 
+
         //DAOs
         mUserLogDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
                 .allowMainThreadQueries()
@@ -69,13 +71,14 @@ public class LandingPageActivity extends AppCompatActivity {
                 .build()
                 .getCartDAO();
 
-
+        //Log.i("CheckLanding", mCartDAO.getAllCarts().toString());
 
         mEditTextUsername = findViewById(R.id.landingUsername);
         mLogoutButton = findViewById(R.id.logoutButton);
         adminButton = findViewById(R.id.buttonAdmin);
         cartButton = findViewById(R.id.landingCart);
         searchButton = findViewById(R.id.landingSearch);
+        adminOnlyText = findViewById(R.id.landingAdminAdditional);
 
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -153,14 +156,21 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         });
 
+
+        adminOnlyText.setText(mUserLogDAO.getAllUsers().toString());
+
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("CheckLandingPage", mUserLogDAO.getAllUsers().toString());
-                Toast.makeText(LandingPageActivity.this, "List of all current users: \n" + mUserLogDAO.getAllUsers().toString(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(LandingPageActivity.this, "Avocado Toast", Toast.LENGTH_SHORT).show();
+                Log.i("CheckLanding", mCartDAO.getAllCarts().toString());
+                if (adminOnlyText.getVisibility() == View.INVISIBLE) {
+                    adminOnlyText.setVisibility(View.VISIBLE);
+                } else {
+                    adminOnlyText.setVisibility(View.INVISIBLE);
+                }
             }
         });
+
 
         //note that cartButton is in fact button to UserInfoActivity, I was too lazy to rename it and redo constraint ID assignments in layout file
         cartButton = findViewById(R.id.landingCart);

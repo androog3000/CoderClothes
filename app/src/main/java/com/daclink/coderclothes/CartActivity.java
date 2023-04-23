@@ -115,8 +115,8 @@ public class CartActivity extends AppCompatActivity {
             }
         }
 
-        Log.i("CheckCartActivity", productsArray[0] + " " + productsArray[1] + " " + productsArray[2] + " " + productsArray[3]);
-        Log.i("CheckCartActivity", quantityArray[0] + " " + quantityArray[1] + " " + quantityArray[2] + " " + quantityArray[3]);
+        //Log.i("CheckCartActivity", productsArray[0] + " " + productsArray[1] + " " + productsArray[2] + " " + productsArray[3]);
+        //Log.i("CheckCartActivity", quantityArray[0] + " " + quantityArray[1] + " " + quantityArray[2] + " " + quantityArray[3]);
 
         //now I have productArray and quantityArray sorted descending together
 

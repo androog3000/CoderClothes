@@ -126,14 +126,16 @@
 
     <TextView
         android:id="@+id/landingAdminAdditional"
-        android:layout_width="267dp"
-        android:layout_height="102dp"
-        android:hint="Admin Additional Functionality"
+        android:layout_width="358dp"
+        android:layout_height="153dp"
+        android:gravity="center"
+        android:hint="@string/admin_additional_functionality"
+        android:textSize="12sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823"
-        android:visibility="invisible"/>
+        app:layout_constraintVertical_bias="0.977" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

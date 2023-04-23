@@ -167,6 +167,6 @@ public class Cart {
                 ", Product='" + beverageName + '\'' +
                 ", Price=" + beveragePrice +
                 ", Cart Quantity=" + beverageQuantity +
-                '}';
+                '}' + "\n";
     }
 }
